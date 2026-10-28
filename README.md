@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # GU TECH Learning Management System
 
 A responsive internal LMS built with React, Vite, Node.js, Express, and Supabase. Authenticated operations run through a server API; PostgreSQL row level security protects data and Supabase Storage keeps course materials private.
@@ -46,3 +47,7 @@ For local Supabase development, install the CLI, then run `npm run db:start` and
 - Audit records, role middleware, pagination, rate limits, private storage, and row level security policies.
 
 Before production, configure HTTPS, Supabase Auth email delivery and redirect URLs, trusted frontend origins, backups, and monitoring. Never commit `.env` files or expose the service role key in the browser.
+=======
+# university-portal
+its a complete web app
+>>>>>>> b5668794542b2cd58dca6aa75b6428f7dd8a2ae4
