@@ -3,11 +3,12 @@ import multer from 'multer';
 import { z } from 'zod';
 import { adminSupabase, userSupabase } from '../supabase.js';
 import { allowRoles } from '../middleware/auth.js';
+import { config } from '../config.js';
 import { isCourseMember } from '../lib/access.js';
 import { detectAllowedMime, storagePath } from '../lib/files.js';
 
 export const complaints = Router();
-const upload = multer({ storage: multer.memoryStorage(), limits: { fileSize: 10 * 1024 * 1024, files: 1 } });
+const upload = multer({ storage: multer.memoryStorage(), limits: { fileSize: Math.min(10 * 1024 * 1024, config.maxUploadBytes), files: 1 } });
 const attachmentExtensions = ['.pdf', '.png', '.jpg', '.jpeg', '.txt'];
 
 complaints.post('/complaints', allowRoles('student','teacher'), upload.single('attachment'), async (req, res, next) => {

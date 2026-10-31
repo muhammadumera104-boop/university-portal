@@ -1,0 +1,21 @@
+{
+  "name": "gu-tech-lms",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "GU TECH LMS. Root package used by Vercel: it installs the API dependencies for api/index.js. The web app installs its own dependencies from Front end/.",
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.57.0",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "dotenv": "^16.6.1",
+    "express": "^5.1.0",
+    "express-rate-limit": "^8.1.0",
+    "helmet": "^8.1.0",
+    "multer": "^2.0.2",
+    "zod": "^4.1.0"
+  }
+}

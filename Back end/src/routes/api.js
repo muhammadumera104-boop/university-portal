@@ -2,6 +2,7 @@ import { Router } from 'express';
 import multer from 'multer';
 import { z } from 'zod';
 import { adminSupabase, userSupabase } from '../supabase.js';
+import { config } from '../config.js';
 import { authenticate, allowRoles } from '../middleware/auth.js';
 import { canManageCourse, isEnrolled, teachesCourse } from '../lib/access.js';
 import { detectAllowedMime, storagePath } from '../lib/files.js';
@@ -24,7 +25,7 @@ api.use(notifications);
 
 const paginationSchema = z.object({ page: z.coerce.number().int().min(1).default(1), pageSize: z.coerce.number().int().min(1).max(100).default(50) });
 const byPosition = (a, b) => a.position - b.position;
-const submissionUpload = multer({ storage: multer.memoryStorage(), limits: { fileSize: 25 * 1024 * 1024, files: 1 } });
+const submissionUpload = multer({ storage: multer.memoryStorage(), limits: { fileSize: config.maxUploadBytes, files: 1 } });
 const submissionExtensions = ['.pdf', '.docx', '.pptx', '.zip', '.png', '.jpg', '.jpeg', '.txt'];
 
 async function profileNames(ids) {

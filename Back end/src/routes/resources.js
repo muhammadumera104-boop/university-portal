@@ -3,11 +3,12 @@ import multer from 'multer';
 import { z } from 'zod';
 import { userSupabase } from '../supabase.js';
 import { allowRoles } from '../middleware/auth.js';
+import { config } from '../config.js';
 import { canManageCourse, isCourseMember } from '../lib/access.js';
 import { detectAllowedMime, safeFileName, storagePath } from '../lib/files.js';
 
 export const resources = Router();
-const upload = multer({ storage: multer.memoryStorage(), limits: { fileSize: 25 * 1024 * 1024, files: 1 } });
+const upload = multer({ storage: multer.memoryStorage(), limits: { fileSize: config.maxUploadBytes, files: 1 } });
 const resourceExtensions = ['.pdf', '.docx', '.pptx', '.zip', '.png', '.jpg', '.jpeg', '.gif', '.webp'];
 
 resources.post('/courses/:courseId/resources', allowRoles('admin', 'teacher'), upload.single('file'), async (req, res, next) => {

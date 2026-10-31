@@ -51,3 +51,7 @@ Before production, configure HTTPS, Supabase Auth email delivery and redirect UR
 # university-portal
 its a complete web app
 >>>>>>> b5668794542b2cd58dca6aa75b6428f7dd8a2ae4
+
+## Deploying
+
+See [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md) for the Vercel setup: one project serves the web app and the API, with the environment variables, Supabase redirect settings and the upload-size limit you need to know about.
